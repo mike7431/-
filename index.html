@@ -172,6 +172,15 @@
 
   .empty { text-align: center; color: var(--text-faint); font-size: 13px; padding: 40px 10px; line-height: 1.8; }
 
+  .rankRow {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 7px 9px; background: var(--surface); border: 1px solid var(--line);
+    border-radius: 7px; margin-bottom: 6px; font-size: 12.5px;
+  }
+  .rankRow .rankName { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-right: 8px; }
+  .rankRow .rankCount { color: var(--accent); font-weight: 700; white-space: nowrap; }
+  .rankEmpty { color: var(--text-faint); font-size: 12px; padding: 4px 2px; }
+
   /* ---------- Footer utils ---------- */
   .utilBar { display: flex; gap: 10px; margin-top: 26px; }
   .utilBar button {
@@ -213,6 +222,20 @@
         <div class="stat"><div class="num" id="statMonth">¥0</div><div class="label">今月</div></div>
       </div>
 
+      <button id="rankToggle" style="width:100%; padding:10px; border-radius:7px; border:1px solid var(--line); background:none; color:var(--text-muted); font-size:12.5px; font-family:inherit; margin-bottom:18px;">店舗・担当者別 利用回数を見る</button>
+      <div id="rankPanel" style="display:none; margin-bottom:22px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <div>
+            <div style="font-size:11.5px; color:var(--text-faint); margin-bottom:6px;">店舗別</div>
+            <div id="rankShop"></div>
+          </div>
+          <div>
+            <div style="font-size:11.5px; color:var(--text-faint); margin-bottom:6px;">担当者別</div>
+            <div id="rankCast"></div>
+          </div>
+        </div>
+      </div>
+
       <button id="addToggle">＋ 新しい記録を追加</button>
 
       <div id="formCard">
@@ -237,6 +260,7 @@
           <label>店舗名</label>
           <input type="text" id="fShop" placeholder="店舗名を入力" list="shopList" autocomplete="off">
           <datalist id="shopList"></datalist>
+          <div id="shopVisitHint" style="font-size:11.5px; color:var(--accent); margin-top:4px;"></div>
         </div>
         <div class="row2">
           <div class="field">
@@ -258,6 +282,7 @@
           <label>担当者・キャスト名（任意）</label>
           <input type="text" id="fCast" placeholder="任意" list="castList" autocomplete="off">
           <datalist id="castList"></datalist>
+          <div id="castVisitHint" style="font-size:11.5px; color:var(--accent); margin-top:4px;"></div>
         </div>
         <div class="field">
           <label>満足度</label>
@@ -291,7 +316,12 @@
         <select id="monthFilter">
           <option value="">年月：すべて</option>
         </select>
-        <button id="sortToggle" class="btn-ghost" style="border:1px solid var(--line); border-radius:7px; padding:0 12px; white-space:nowrap;">新しい順 ▾</button>
+        <select id="sortSelect">
+          <option value="date_desc">新しい順</option>
+          <option value="date_asc">古い順</option>
+          <option value="rating_desc">評価が高い順</option>
+          <option value="rating_asc">評価が低い順</option>
+        </select>
       </div>
 
       <div id="list"></div>
@@ -482,8 +512,7 @@
   const searchBox = document.getElementById("searchBox");
   const genreFilter = document.getElementById("genreFilter");
   const monthFilter = document.getElementById("monthFilter");
-  const sortToggle = document.getElementById("sortToggle");
-  let sortAsc = false; // false = 新しい順（降順）, true = 古い順（昇順）
+  const sortSelect = document.getElementById("sortSelect");
 
   function yen(n){ return "¥" + Number(n||0).toLocaleString("ja-JP"); }
 
@@ -508,9 +537,13 @@
       const matchYM = !ym || (e.date||"").slice(0,7) === ym;
       return matchQ && matchG && matchYM;
     });
-    filtered.sort((a,b)=> sortAsc
-      ? (a.date||"").localeCompare(b.date||"")
-      : (b.date||"").localeCompare(a.date||""));
+    filtered.sort((a,b)=>{
+      const mode = sortSelect.value;
+      if(mode === "date_asc") return (a.date||"").localeCompare(b.date||"");
+      if(mode === "rating_desc") return (b.rating||0) - (a.rating||0) || (b.date||"").localeCompare(a.date||"");
+      if(mode === "rating_asc") return (a.rating||0) - (b.rating||0) || (b.date||"").localeCompare(a.date||"");
+      return (b.date||"").localeCompare(a.date||""); // date_desc (default)
+    });
 
     if(filtered.length === 0){
       listEl.innerHTML = '<div class="empty">まだ記録がありません。<br>「＋ 新しい記録を追加」から最初の記録をどうぞ。</div>';
@@ -566,7 +599,40 @@
     populateMonthFilter();
     renderList();
     renderSuggestions();
+    renderRankings();
   }
+
+  function renderRankings(){
+    fillRankList("rankShop", countBy("shop"));
+    fillRankList("rankCast", countBy("cast"));
+  }
+  function countBy(field){
+    const map = {};
+    entries.forEach(e=>{
+      const v = (e[field]||"").trim();
+      if(!v) return;
+      map[v] = (map[v]||0) + 1;
+    });
+    return Object.entries(map).sort((a,b)=> b[1]-a[1]);
+  }
+  function fillRankList(elId, rows){
+    const el = document.getElementById(elId);
+    if(!rows.length){
+      el.innerHTML = '<div class="rankEmpty">データなし</div>';
+      return;
+    }
+    el.innerHTML = rows.map(([name,count])=>
+      `<div class="rankRow"><span class="rankName">${escapeHtml(name)}</span><span class="rankCount">${count}回</span></div>`
+    ).join("");
+  }
+
+  const rankToggle = document.getElementById("rankToggle");
+  const rankPanel = document.getElementById("rankPanel");
+  rankToggle.addEventListener("click", ()=>{
+    const open = rankPanel.style.display !== "none";
+    rankPanel.style.display = open ? "none" : "block";
+    rankToggle.textContent = open ? "店舗・担当者別 利用回数を見る" : "利用回数ランキングを閉じる";
+  });
 
   function populateMonthFilter(){
     const months = [...new Set(entries.map(e=> (e.date||"").slice(0,7)).filter(Boolean))];
@@ -580,11 +646,7 @@
     if(months.includes(current)) monthFilter.value = current;
   }
 
-  sortToggle.addEventListener("click", ()=>{
-    sortAsc = !sortAsc;
-    sortToggle.textContent = sortAsc ? "古い順 ▾" : "新しい順 ▾";
-    renderList();
-  });
+  sortSelect.addEventListener("change", renderList);
   monthFilter.addEventListener("change", renderList);
 
   function renderSuggestions(){
@@ -664,6 +726,17 @@
     return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
   }
 
+  function updateVisitHint(inputEl, hintEl, field){
+    const val = inputEl.value.trim();
+    if(!val){ hintEl.textContent = ""; return; }
+    const count = entries.filter(e=> e.id !== editingId && (e[field]||"").trim() === val).length + 1;
+    hintEl.textContent = count === 1 ? "はじめての利用です" : `利用は今回で${count}回目です`;
+  }
+  const shopVisitHint = document.getElementById("shopVisitHint");
+  const castVisitHint = document.getElementById("castVisitHint");
+  fShop.addEventListener("input", ()=> updateVisitHint(fShop, shopVisitHint, "shop"));
+  fCast.addEventListener("input", ()=> updateVisitHint(fCast, castVisitHint, "cast"));
+
   function openForm(){
     formCard.classList.add("open");
     addToggle.style.display = "none";
@@ -685,6 +758,8 @@
     fCast.value = "";
     fMemo.value = "";
     setStars(0);
+    shopVisitHint.textContent = "";
+    castVisitHint.textContent = "";
   }
 
   function setStars(n){
@@ -736,6 +811,8 @@
     fCast.value = e.cast || "";
     fMemo.value = e.memo || "";
     setStars(e.rating || 0);
+    updateVisitHint(fShop, shopVisitHint, "shop");
+    updateVisitHint(fCast, castVisitHint, "cast");
     openForm();
   }
 
