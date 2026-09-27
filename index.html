@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1b1a1d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="記録帳">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%20%22%E5%88%A9%E7%94%A8%E8%A8%98%E9%8C%B2%E5%B8%B3%22%2C%20%22short_name%22%3A%20%22%E8%A8%98%E9%8C%B2%E5%B8%B3%22%2C%20%22start_url%22%3A%20%22.%22%2C%20%22display%22%3A%20%22standalone%22%2C%20%22background_color%22%3A%20%22%231b1a1d%22%2C%20%22theme_color%22%3A%20%22%231b1a1d%22%2C%20%22icons%22%3A%20%5B%7B%22src%22%3A%20%22data%3Aimage/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAAFwElEQVR4nO3d0Y3bSBBF0R7DUYzhZJyKA3AsE4BTcWz%2BICAIEiVRfF3Vr7rvwX7tLmyyeFWUrLH08ePzZwPO%2Bjb6AFAbAUFCQJAQECQEBAkBQUJAkBAQJAQECQFBQkCQEBAkBAQJAUFCQJAQECQEBAkBQUJAkBAQJAQECQFB8n30Abj4%2B%2BfXW///769/QUdSy8eCfy/s3VaOW7CqVQKKi%2BaRRWKaPKD8bu7NXdKcATl0c2/KkqYKSOnm3aub%2BXs5myQgh9dQDseQr3xAxy9b5gXzPKoIhQM6cpEcLk%2BV4zynZEAVL0nFYz6iWEAvL4P/NZjgFK5VCuj56GvNfZpzqRHQNOO%2BMcF5FQjoyZRLjPil0ifoHtCj4fpP9l1Fz9Q3oNKPy3MqnrJpQEUfjl3UOnfHn0isNcHuHp2m5zvEdhtod0yLpHOjxCi8NlCJkaXZPXG3PeSygRa/bT1hPhmLgFg8L9mOaPwtzHY0VmxvZ%2BMDukc9uzzHMjig%2B8eQ55hM3A9n%2BBIaGRD1nODW0LCAqOc0q4bGBEQ9Ip%2BGBgREPV2YNOT4KgyFZAfE%2BunIYQmlBkQ93Q1vKC8g6gkytiGeA0GSFBDrJ9TAJZQREPUkGNUQtzBIwn8eqOj64bAPyt5A/pfh759fu8v/0b%2B3kj/e2ID8J37tSCIlMroWfbSpG8h5/bw1aOeGkoccGJDzlG%2BcONS5z%2B64vA1ku35Oz9e2ocxRRwVkO9wb4nEucppPJG0gz/XTZayeDaUNPCQgz5neOPJRc5d/xF/KQdBBZmwgz/XzxH00RzJyk3PAi76Vce6TeJ78pxJLKEL/gEqP8uWjttweuhZxacI3kOHEgxI3fOQkDH/RW9iug%2BM2fEgM1Dmgm0eh4ay7fFpKoQ8RuznU7kfIBoJkrYA6flhToSUUqmdAq82uqL6XKXADGT4BWlPohVjoFtb9wwa5i7WlAkKEbgEt9bCrruPFitpAbk%2BAgj4st8pdLO5ycAuDhIAgISBICAiSJQIK/bqJKs%2Bjg/QJyP9NeAS9Lb/EBkIcAoKEgCD5PvoA%2Bjh3R49%2Bnvv815/jmeIMG6jo651ynxSzq3ZAE1yD6sdfO6A5lG6ocECl536j7rlUDajuxB8pekZVA4IJAoKEgCAhIEgICBICgqRPQNEfAQFd0M9ssYEgISBICAgSAoKEgCBZ/bsyFlHguzLm%2BAHNRXS8WNzCICEgSPjGwvmV%2BcZCngaV0PcycQuDhIAg6RwQb8u7if7gFDYQJOEBsYQGShh%2B/4B4LWYr4tJwC4MkIyDuYkPkjD0kIO5ihoIuStItjCWULG3gq3xXxuJm%2BK4MllCazFHzjYXzm%2BcbC1lCCZKHHBsQS2i46EuQ/QeJLKFQ%2BeMND%2Bj%2BEUBDQe4Hm3AH4K0MSDICYgklGLJ%2BWtoGoqFQo%2Bpp3MIgyguIJRRk4PppyRuIhrobW0/Lv4XRUEfD62k8B4JoQEBdltB8b5K8e0YO66eN2kDcyEQm9bSBtzC9oZmW0Fvn4lNPG/sciIY2detpw59E01DpetrwgHYt0tDvr39iPQ4%2Bfnz%2BHH0M%2B6MpmkUQ2xFZBNQeP7wcZjSW%2BWRcAtrYPs5G8R%2BI13Og3dF43vsT%2BNfT3DbQxnxpJyg0Aa8NtHk0pkVWUaF6mucG2jzJxXOUuoqn7BvQptbDUVH0TN0DajUfl28pfYIFAmqvnv34T/mRCc6rRkCbCcZ9Mc25VAqoHXgh5j/6CU7hWrGANkdez7tdhorHfETJgDZVLkmV4zyncECb43%2B6mHmRPI8qQvmANg4/QuRwDPkmCWijvNeh/6WIuN/L2VQBXXi%2BazZTNxdzBnThUNKU3VxMHtBFfklzd3OxSkDX4mJaJJprKwa0a83XUDoCgsTxJxJRCAFBQkCQEBAkBAQJAUFCQJAQECQEBAkBQUJAkBAQJAQECQFBQkCQEBAkBAQJAUFCQJAQECQEBAkBQfIfsTJ5lYJuTLgAAAAASUVORK5CYII%3D%22%2C%20%22sizes%22%3A%20%22192x192%22%2C%20%22type%22%3A%20%22image/png%22%2C%20%22purpose%22%3A%20%22any%20maskable%22%7D%2C%20%7B%22src%22%3A%20%22data%3Aimage/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAIAAAB7GkOtAAARfklEQVR4nO3d0XUcNxKG0ZGPo5COk3EqG4Bj2QCcysa2D%2BND0SJnON2NbqDqv/d5Vx6xgfqAJiV9%2B/H9jxsAeX6b/QEAmEMAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACCUAAKEEACCUAACEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACCUAAKEEACCUAACEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAj1%2B%2BwPAOP9/defw3/N//z3f8N/TZjr24/vf8z%2BDLDZGSP%2BCHmgIgFgdavN%2BtepAosTANZSd9y/QhJYigAwWe%2BJ/5weMJcAMEHy0H9EDLieAHARQ/91YsA1BIBzmftHKAGnEgDGM/TPIAYMJwAMY%2B5fQwkYRQA4ytyfRQk4SADYydxfhxKwjwCwjbm/MiVgEwHgVUZ/FTLAiwSAL5j7dSkBzwkAD5Ue/WNnny8FLQkAnygx79aZa75cFCUA/LTsIKs4vHwxWZ8AcLutN636DSlfYRYkAOkWGUxp88iXnRUIQK7pM8j0ufMgmEUAEk2cOGbNcx4NVxKALLPmi%2BGylSfFBQQgxfUDxSgZxbPjJAIQ4coJYnacx3NkLAFo7rKRYV5cyWNlCAFoy4xozyPmIAFo6Jq5YCiswxNnHwHo5oJZYBCsyaNnKwHo4%2Bz9b/NXYSXwIgHowIbnI6uCLwlAeafuc5u8OsuDJwSgsPP2to3dj9XCRwJQ1Un72WbuzbLhPQGoxx7mIEuIOwEo5oyta99mspb4bfYHYAM7loHOePTT/20DNnEDqMHo5zxWVywBKGD4/rQ5%2BcgyCyQAqxu7Le1JnrPeogjAupzImMLCyyEAi3IQYy4rMIEArGjg3rPxOMJS7E0A1uLYxWqsycYEYCFOWyzL4mzJHwRbhQ3GygYuKn9YbB1uAEsYtSWMfs5mrXbiBjCfHUUho5aZe8AK3ABmMvqpy%2BptwA1gGvuH0lwFGhCAOUx/GtCA6rwCmmDIcjf6WYclXZQbwNVsFfoZsiDdA64nAJcy/elKAyryCug6xxe30c/6rPNC3AAuYlcQ4vhCdQ%2B4jABcwfQnigZUIQCnM/0JpAEl%2BB7AuQ4uYqOf6myBlbkBnMjSh4PL2D3gVAJwFtMf7jRgWQJwCtMf3tOANQnAeKY/fKQBCxKAwUx/eEQDViMAI5n%2B8JwGLEUAhjH94RUasA4BGMP0h9dpwCIEYD7Tn0CW/QoEYIAj5xHbgFhHFr9LwBACcJTpD7tpwFwCcIjpDwdpwEQCsJ/pD0NowCwCsJPpDwNpwBQCcDXTHz5la1xPAPbYfeKwxOGJ3RvEJWAfAdjM9IfzaMCVBGAb0x/OpgGXEYArmP6wiS1zDQHYwPkCFmeTbiIAr/LyB67kRdAFBOAlpj9cTwPOJgAnMv3hIJvoVALwtX2nCQsXhti3lVwCXiEAX7CMoCib90sC8IxX/7AC3ww4iQCMZ/rDcLbVGQTgIa/%2BYSm%2BGTCcAHzOooE2bOdHBGAkx384lS02lgB8wssfWJYXQQMJwK9Mf1icBowiAAChBOBfHP%2BhBJeAIQTgKNMfprD1jhOAn5wOoD3b/D0B%2BIeXP1COF0EHCcB%2Bpj9MZxseIQC3mxMBhLHl7wRgJ%2BcOWITNuJsA7DkLWHCwlB1b0iXgdrv9PvsDwKWeb3tpJ8q3H9//mP0ZZnL8T%2BBHvELYzltF3wDcAXs7%2BHzf/u/hM6K3v//6M/n5%2Bh7ANslrpZC///pzYN3H/mqcx/bcKvcVkNtiS2dPamtgfbb269wA6OOCc7qrAJ2E3gCcEZq5fi5bDyuzwV/kBkB5U07lrgI0kBgAp4NOJg5iDViWPxf2osQA0Mb0TTv9A8ARcQFw/G9jkeG7yMfgFy4Br4gLwFam/5qW2qtLfRje2LxfygqAjdrDgs9xwY/EDmnPMSsAWzlBLGjZLbrsB0tmCz8XFAD7s4HFH%2BLiH49XRD3EoABs5eywmhI7s8SHjGIjPyEA1FBosBb6qIRLCcDWPenUsJRyI7XcB%2B5t63bOeXwpAaCuorux6McmSkQAbEVgk5ChERGArbz/WUfpfVj6wzdjU3%2BqfwBswroaPLsGv4VYCc%2BufwC2clKAlmztj6L/UXhWdt7569EgOOm/GP7PjrOy5v8imJ/%2BLOqkWfzK8534n%2BYCZsJ7bgBEeH0b3/%2BXCe9/ofP3AOzhooY/uB2HuOHnPquxqN4PrnMAtup916tihel/8P/4SO9RUoVt/p4A0NnB3W5Y0FvbAPhWT0Vjz8hDnunYheESsAJ/NdCbtgEg3MDB7XBAVwLAKgaes4aP7IG/YOPjJOX0DID3P8lOepoWSSfeAt31DADldN1gn4r6zbIyAXCya%2BXUp2mpdOJp3loGwPGqnFGP7IItPeo/YZWW0/KRNQwAAK9ID4Br4HSFjv9j/0MtT5S12P7dAmBTZbp4JxscmfqNl24BoJZ%2BO2qT8N8%2B00UHwDmuhynP0eLpIfw5RgcAIFmrALhQ1%2BJ53XwRqmn2vFoFgEATr/Dhbw9oIDcAdu9czU5SR/hSzJU8CvoEwC4KNH3rTv8AXK/TqOkTAAA2CQ2Ag9tcQ85QizzEIR%2Bj06GyokXW0vVCAwBAkwA4QAGXaTNwmgSAQjq9/7nzFoiiEgOw1OwAVpA5FhIDAMCtRwDcnQvp9/7nzlugND0eVocAALBDXAAWPDwCKwgcDnEBoLpld%2BmyHwweEQCu0%2BO16al8ibhS%2BQDYMMAUDYZP%2BQAQZfHXLIt/PPhFVgDsz4kaHJeu4Qs1UdqIyAoAAG8EACCUAFBGiet5iQ8Jd7UD4G1pFZ7UJr5cVVR/UrUDsImjGfClqEERFAAA3hMAgFACQA2FLuaFPirhBIDTVf9G2RS%2BaFxAAABCFQ6AIxIwXelBVDgAm3gtC7woZ1ykBIDSym3Ich%2BYTALAuUpfkOfypeNsAgAQSgAAQgkAQCgBAAglAKyu6E/UFP3YRBEATuTnWA7yBeRUVQNgYwCLqDuOqgZgE5dxYJOQoRERAAA%2BEgCAUL/P/gCsa5E3m4t8jFmG/PZDXmiwlQDwq/CB29LbM1UC3hMAfjL627s/YhngTgC43Yz%2BMDLAnW8CY/qH8twRgHSmQDJPP5wARLP/sQaSCUAuO587KyGWAISy53nPesgkAInsdj6yKgIJAEAoAYjjoMcj1kYaAQAIJQBZHPF4zgqJIgAAoQQAIJQABHG75xXWSQ4BAAglAAChBAAglAAAhBIAgFACABAqIgB%2BrA3YJGRoVA2Af88aWETdcVQ1AAAcJAAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQKiUAIT8uT7guJxxUTgAdf/0HdBG6UFUOAAAHCEAAKEEACCUAACEEgCAUEEByPnRLmC3qEFROwClfwALqK76CKodAAB2EwCAUAIAECorAFHf3gG2ShsRWQEA4E35AFT/LjxQVIPhUz4AAOwjAACh4gKQ9k0e4EWBwyEuAADcdQhAg2/FALX0GDsdAgDADokBCHzTBzyXORYSAwDArU0AeryPA0poM3CaBACArUIDkPm%2BD/hU7EAIDQAAfQLQ5q0csLJOo6ZPALaKvfQB7yWPgtwAAIRrFYBOVzNgQc2GTKsAAPC66AAkv/sDbvFDIDoAAMm6BaDZGzpgHf3GS7cAbBV%2BAYRktn96AABiNQxAv2saMF3LwdIwAFu5BkIgG/8mAACxegZg62XNWQCibN3yLd//3LoGAIAvCQBAqLYB8BYI%2BJT3P2/aBgCA5wTgJ5cAaM82f69zABpf3IBr9B4jnQMAwBPNA%2BBbwcAb3/79RfMAAPCIAPzKJQBasrU/6h%2BA9pc44AwJo6N/AHZwUoBmbOpPRQQgoeTAQCFDIyIAAHyUEgA/Dwqx/PTnIykBAOAXAvCQSwA0YCM/ERSAnGsdsFvUoAgKwA7ODlCaLfxcVgCi2g5slTYisgKwgxMEFGXzfikuADsKbxlBOTu2bdrx/xYYAADuEgPgEgC9Of6/KDEAANxiA%2BASAF05/r8uNAAA5AbAJQD6cfzfJDcA%2B2gALMv23Co6AMnlB27xQyA6ADcvgqALL392SA8AQCwBcAmA8hz/9xGAnTQAFmEz7iYAt5uzAISx5e8EYD/nDpjONjxCAP6x70Rg8cFE%2Bzag4/8bAfjJsoD2bPP3BOAolwCYwtY7TgD%2BxYsgKMHLnyEEACCUAPzKJQAW5/g/igB8QgNgWab/QAIwkgbAqWyxsQTgc84L0Ibt/IgAPORFECzFy5/hBGA8DYDhbKszCMAzu88OFisMtHtDOf4/JwBfsICgKJv3SwLwNd8MgIm8%2Bj%2BPAJxIA%2BAgm%2BhUAvAS3wyA63n1fzYBeJUGwJVM/wsIwAYWFglKr/PSH/56AnCFRS4B9gZVLLJl2hOAbbwIgrN5%2BXMZAdhMA%2BA8pv%2BVBGCPug2wSXhu7gox/S8mAFeb3gBYk61xPQHY6ciJY%2B5Cd1bikYlr48imsKR3E4D96jYAPjL9AwnAIUUbYM%2BwDtN/IgE4SgNoYNZ6MP3nEoABNIDSTP9YAjCfBjBRxenPKAIwxsFdpAFMUXT6W7SjfPvx/Y/Zn6GPusvacSxN3cVm%2Bg8kAIOVXtwyEML0504Axqu%2BxGWgsdInjOlbox8BOEWPha4EPfRYTov8LpoRgLNY7vDGdliTnwI6S92fC4KxTP9lCcCJNABM/5V5BXS643PcHqAiK399bgCnO76IXQUox/QvQQCuoAFEMf2rEICLaAAhTP9CfA/gUkOGuO3BmizvctwALjVkcbsKsCDTvyIBuJoG0I/pX5RXQHOMmuD2DHNZyaW5Acwxarm7CjCR6V%2BdAEyjAZRm%2BjfgFdB8NhK1WLFtuAHM5ypAIaZ/J24Aqxg4vm0tzmCJ9uMGsIqBW8JVgOFM/5bcANYydnbbaRxnTTYmACty2mIRlmJvArAoxy7msgITCMC6hr/Ktwl5hYWXQwBW5yDGlay3KAJQgBMZF7DMAglADWf8ZKf9yZ3VFUsAKrFRGcuKCucPglVyxtbyp8Zimf64AdRz0si2dXNYQtwJQFX2MDtYNrwnAIWd9/bGfu7HauEjASjv1Jf49nZ1lgdPCEAHZ38j1z6vyKrgSwLQhw3PnZXAiwSgmwt%2BrNP%2BX5NHz1YC0NA1P9pvFqzDE2cfAWjrsj/hZS7M4hFzkAA0Z0a05LEyhABEuPLvezAyzuM5MpYApLj%2B7/wxQUbx7DiJAGSZ9Ve/GShbeVJcQAASTfwbQM2X5zwariQAuab/RdAmzp0HwSwCkG769LlLm0G%2B7KxAALjdlplHb/oNJl9hFiQA/LTakHpTcVr5YrI%2BAeATyw6v99YZZL5cFCUAPFRirj0ydt75UtCSAPCF0rMvnNHPcwLAq5SgCnOfFwkA28jAyox%2BNhEAdlKCdZj77CMAHKUEs5j7HCQADKME1zD3GUUAGE8JzmDuM5wAcC4xOMLQ51QCwEWU4HXmPtcQACYQg48Mfa4nAEyWHANDn7kEgLX07oGJz1IEgNXVTYJxz%2BIEgJJWq4JZT0UCQENn5MGIpx8BAAj12%2BwPAMAcAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACCUAAKEEACCUAACEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACCUAAKEEACCUAACEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAqP8Du4VvVmUOndkAAAAASUVORK5CYII%3D%22%2C%20%22sizes%22%3A%20%22512x512%22%2C%20%22type%22%3A%20%22image/png%22%2C%20%22purpose%22%3A%20%22any%20maskable%22%7D%5D%7D">
+<title>利用記録帳</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #1b1a1d;
+    --surface: #242226;
+    --surface-2: #2c2a2f;
+    --line: #3a373c;
+    --accent: #b8895f;
+    --accent-soft: #b8895f33;
+    --text: #ece8e2;
+    --text-muted: #9a959a;
+    --text-faint: #6e6a6f;
+    --danger: #c0605a;
+    --radius: 10px;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f3f0ec;
+      --surface: #ffffff;
+      --surface-2: #f7f4ef;
+      --line: #e2ddd4;
+      --accent: #9c6b42;
+      --accent-soft: #9c6b4222;
+      --text: #2a2622;
+      --text-muted: #71695f;
+      --text-faint: #a89e92;
+      --danger: #a8443d;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  html, body {
+    height: 100%;
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Zen Kaku Gothic New', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .serif { font-family: 'Shippori Mincho', serif; }
+
+  #app { min-height: 100%; display: flex; flex-direction: column; }
+
+  /* ---------- Lock screen ---------- */
+  #lock {
+    flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 22px; padding: 24px;
+  }
+  #lock .mark {
+    width: 46px; height: 46px; border: 1px solid var(--accent); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent); font-size: 20px;
+  }
+  #lock h1 { font-size: 17px; font-weight: 500; color: var(--text-muted); margin: 0; letter-spacing: .05em; }
+  #pinDots { display: flex; gap: 14px; }
+  #pinDots span {
+    width: 12px; height: 12px; border-radius: 50%; border: 1px solid var(--text-faint);
+    transition: background .15s, border-color .15s;
+  }
+  #pinDots span.filled { background: var(--accent); border-color: var(--accent); }
+  #pinPad {
+    display: grid; grid-template-columns: repeat(3, 64px); gap: 14px; margin-top: 6px;
+  }
+  #pinPad button {
+    width: 64px; height: 64px; border-radius: 50%; border: 1px solid var(--line);
+    background: var(--surface); color: var(--text); font-size: 20px; font-family: inherit;
+  }
+  #pinPad button:active { background: var(--surface-2); }
+  #pinPad button.wide { font-size: 13px; color: var(--text-muted); border: none; background: none; }
+  #lockError { color: var(--danger); font-size: 13px; min-height: 18px; }
+  #lockSetupNote { color: var(--text-faint); font-size: 12.5px; text-align: center; max-width: 260px; line-height: 1.6; }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky; top: 0; z-index: 5;
+    padding: calc(16px + env(safe-area-inset-top, 0px)) 18px 14px;
+    background: var(--bg); border-bottom: 1px solid var(--line);
+    display: flex; align-items: baseline; justify-content: space-between;
+  }
+  header h1 { font-size: 19px; margin: 0; font-weight: 700; letter-spacing: .04em; }
+  header .sub { font-size: 11.5px; color: var(--text-faint); }
+  #lockBtn {
+    background: none; border: none; color: var(--text-faint); font-size: 18px; padding: 4px;
+  }
+
+  main { flex: 1; padding: 18px 18px 40px; max-width: 640px; width: 100%; margin: 0 auto; }
+
+  /* ---------- Stat strip ---------- */
+  .stats {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 22px;
+  }
+  .stat {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 12px 10px; text-align: center;
+  }
+  .stat .num { font-size: 18px; font-weight: 700; color: var(--accent); font-family: 'Shippori Mincho', serif; }
+  .stat .label { font-size: 10.5px; color: var(--text-faint); margin-top: 3px; }
+
+  /* ---------- Add button / form ---------- */
+  #addToggle {
+    width: 100%; padding: 13px; border-radius: var(--radius); border: 1px dashed var(--accent);
+    background: var(--accent-soft); color: var(--accent); font-size: 14px; font-family: inherit;
+    margin-bottom: 18px; font-weight: 500;
+  }
+  #formCard {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 16px; margin-bottom: 22px; display: none;
+  }
+  #formCard.open { display: block; }
+  .field { margin-bottom: 12px; }
+  .field label { display: block; font-size: 11.5px; color: var(--text-muted); margin-bottom: 5px; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  input, select, textarea {
+    width: 100%; background: var(--surface-2); border: 1px solid var(--line); color: var(--text);
+    padding: 10px 11px; border-radius: 7px; font-size: 14.5px; font-family: inherit;
+  }
+  input:focus, select:focus, textarea:focus { outline: 1.5px solid var(--accent); border-color: var(--accent); }
+  textarea { resize: vertical; min-height: 56px; }
+  .stars-input { display: flex; gap: 6px; font-size: 24px; cursor: pointer; user-select: none; }
+  .stars-input span { color: var(--line); }
+  .stars-input span.on { color: var(--accent); }
+  .formActions { display: flex; gap: 10px; margin-top: 14px; }
+  .btn {
+    flex: 1; padding: 11px; border-radius: 7px; border: none; font-size: 14px; font-family: inherit; font-weight: 500;
+  }
+  .btn-primary { background: var(--accent); color: #1b1a1d; }
+  .btn-ghost { background: none; border: 1px solid var(--line); color: var(--text-muted); }
+
+  /* ---------- Filter bar ---------- */
+  .filterBar { display: flex; gap: 8px; margin-bottom: 14px; }
+  .filterBar input { flex: 1; }
+  .filterBar select { max-width: 120px; }
+
+  /* ---------- Entry list ---------- */
+  .entry {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 13px 14px; margin-bottom: 10px;
+  }
+  .entry-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+  .entry-shop { font-size: 15px; font-weight: 700; font-family: 'Shippori Mincho', serif; }
+  .entry-date { font-size: 11.5px; color: var(--text-faint); margin-top: 2px; }
+  .entry-tag {
+    display: inline-block; font-size: 10.5px; color: var(--accent); border: 1px solid var(--accent-soft);
+    background: var(--accent-soft); padding: 2px 8px; border-radius: 20px; margin-top: 6px;
+  }
+  .entry-price { font-size: 14px; font-weight: 700; white-space: nowrap; }
+  .entry-stars { color: var(--accent); font-size: 12px; margin-top: 6px; letter-spacing: 1px; }
+  .entry-memo { font-size: 12.5px; color: var(--text-muted); margin-top: 8px; line-height: 1.6; white-space: pre-wrap; }
+  .entry-actions { display: flex; gap: 14px; margin-top: 10px; }
+  .entry-actions button {
+    background: none; border: none; font-size: 11.5px; color: var(--text-faint); padding: 0; font-family: inherit;
+  }
+  .entry-actions button.del { color: var(--danger); }
+
+  .empty { text-align: center; color: var(--text-faint); font-size: 13px; padding: 40px 10px; line-height: 1.8; }
+
+  /* ---------- Footer utils ---------- */
+  .utilBar { display: flex; gap: 10px; margin-top: 26px; }
+  .utilBar button {
+    flex: 1; padding: 10px; border-radius: 7px; border: 1px solid var(--line); background: none;
+    color: var(--text-faint); font-size: 12px; font-family: inherit;
+  }
+  #fileImport { display: none; }
+
+  ::-webkit-scrollbar { width: 0; height: 0; }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- LOCK SCREEN -->
+  <div id="lock" style="display:none;">
+    <div class="mark">🔒</div>
+    <h1 id="lockTitle">PIN を入力</h1>
+    <div id="pinDots"><span></span><span></span><span></span><span></span></div>
+    <div id="lockError"></div>
+    <div id="pinPad"></div>
+    <div id="lockSetupNote" style="display:none;">初回のみ：好きな4桁の数字を決めて、記録を守るためのPINにしてください。</div>
+  </div>
+
+  <!-- MAIN APP -->
+  <div id="main" style="display:none;">
+    <header>
+      <div>
+        <h1 class="serif">利用記録帳</h1>
+        <div class="sub">Private log — このブラウザにのみ保存</div>
+      </div>
+      <button id="lockBtn" title="ロックする">🔒</button>
+    </header>
+
+    <main>
+      <div class="stats">
+        <div class="stat"><div class="num" id="statCount">0</div><div class="label">総回数</div></div>
+        <div class="stat"><div class="num" id="statTotal">¥0</div><div class="label">総額</div></div>
+        <div class="stat"><div class="num" id="statMonth">¥0</div><div class="label">今月</div></div>
+      </div>
+
+      <button id="addToggle">＋ 新しい記録を追加</button>
+
+      <div id="formCard">
+        <div class="row2">
+          <div class="field">
+            <label>日付</label>
+            <input type="date" id="fDate">
+          </div>
+          <div class="field">
+            <label>ジャンル</label>
+            <select id="fGenre">
+              <option>デリヘル</option>
+              <option>ソープ</option>
+              <option>ヘルス</option>
+              <option>メンズエステ</option>
+              <option>ホテヘル</option>
+              <option>その他</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>店舗名</label>
+          <input type="text" id="fShop" placeholder="店舗名を入力" list="shopList" autocomplete="off">
+          <datalist id="shopList"></datalist>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label>エリア</label>
+            <input type="text" id="fArea" placeholder="例：梅田・難波" list="areaList" autocomplete="off">
+            <datalist id="areaList"></datalist>
+          </div>
+          <div class="field">
+            <label>金額（円）</label>
+            <input type="number" id="fPrice" placeholder="0" inputmode="numeric">
+          </div>
+        </div>
+        <div class="field">
+          <label>場所（詳細・ホテル名や待ち合わせ場所など）</label>
+          <input type="text" id="fPlace" placeholder="任意" list="placeList" autocomplete="off">
+          <datalist id="placeList"></datalist>
+        </div>
+        <div class="field">
+          <label>担当者・キャスト名（任意）</label>
+          <input type="text" id="fCast" placeholder="任意" list="castList" autocomplete="off">
+          <datalist id="castList"></datalist>
+        </div>
+        <div class="field">
+          <label>満足度</label>
+          <div class="stars-input" id="fStars">
+            <span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
+          </div>
+        </div>
+        <div class="field">
+          <label>メモ</label>
+          <textarea id="fMemo" placeholder="感想やメモ（任意）"></textarea>
+        </div>
+        <div class="formActions">
+          <button class="btn btn-ghost" id="cancelBtn">キャンセル</button>
+          <button class="btn btn-primary" id="saveBtn">保存する</button>
+        </div>
+      </div>
+
+      <div class="filterBar">
+        <input type="text" id="searchBox" placeholder="店舗名・エリアで検索">
+        <select id="genreFilter">
+          <option value="">ジャンル：すべて</option>
+          <option>デリヘル</option>
+          <option>ソープ</option>
+          <option>ヘルス</option>
+          <option>メンズエステ</option>
+          <option>ホテヘル</option>
+          <option>その他</option>
+        </select>
+      </div>
+      <div class="filterBar">
+        <select id="monthFilter">
+          <option value="">年月：すべて</option>
+        </select>
+        <button id="sortToggle" class="btn-ghost" style="border:1px solid var(--line); border-radius:7px; padding:0 12px; white-space:nowrap;">新しい順 ▾</button>
+      </div>
+
+      <div id="list"></div>
+
+      <div class="utilBar">
+        <button id="exportBtn">バックアップ書き出し</button>
+        <button id="importBtn">読み込み</button>
+        <button id="pinSettingsBtn">PIN設定</button>
+      </div>
+      <div class="utilBar">
+        <button id="seedBtn">よく使う候補をまとめて登録</button>
+      </div>
+      <div id="seedCard" style="display:none; background: var(--surface); border:1px solid var(--line); border-radius: var(--radius); padding:16px; margin-top:14px;">
+        <div class="field">
+          <label>店舗名（1行に1つ）</label>
+          <textarea id="seedShop" placeholder="例：〇〇店&#10;△△店"></textarea>
+        </div>
+        <div class="field">
+          <label>エリア（1行に1つ）</label>
+          <textarea id="seedArea" placeholder="例：梅田&#10;難波"></textarea>
+        </div>
+        <div class="field">
+          <label>場所・詳細（1行に1つ）</label>
+          <textarea id="seedPlace"></textarea>
+        </div>
+        <div class="field">
+          <label>担当者・キャスト名（1行に1つ）</label>
+          <textarea id="seedCast"></textarea>
+        </div>
+        <div class="formActions">
+          <button class="btn btn-ghost" id="seedCancelBtn">閉じる</button>
+          <button class="btn btn-primary" id="seedSaveBtn">候補として保存</button>
+        </div>
+      </div>
+      <input type="file" id="fileImport" accept="application/json">
+    </main>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  const STORAGE_KEY = "riyou_kiroku_entries_v1";
+  const PIN_KEY = "riyou_kiroku_pin_v1";
+  let entries = [];
+  let editingId = null;
+  let currentStars = 0;
+  let pinBuffer = "";
+  let pinMode = "check"; // check | setup | change-old | change-new
+
+  function safeGet(key){
+    try { return localStorage.getItem(key); } catch(e){ return null; }
+  }
+  function safeSet(key, val){
+    try { localStorage.setItem(key, val); return true; } catch(e){ return false; }
+  }
+
+  function loadEntries(){
+    try {
+      const raw = safeGet(STORAGE_KEY);
+      entries = raw ? JSON.parse(raw) : [];
+    } catch(e){ entries = []; }
+  }
+  function saveEntries(){
+    safeSet(STORAGE_KEY, JSON.stringify(entries));
+  }
+
+  // ---------------- Lock screen ----------------
+  const lockEl = document.getElementById("lock");
+  const mainEl = document.getElementById("main");
+  const pinDots = document.querySelectorAll("#pinDots span");
+  const lockError = document.getElementById("lockError");
+  const lockTitle = document.getElementById("lockTitle");
+  const setupNote = document.getElementById("lockSetupNote");
+  const pinPad = document.getElementById("pinPad");
+
+  function buildPad(){
+    pinPad.innerHTML = "";
+    const keys = ["1","2","3","4","5","6","7","8","9","","0","⌫"];
+    keys.forEach(k=>{
+      const b = document.createElement("button");
+      if(k === ""){ b.style.visibility = "hidden"; }
+      else {
+        b.textContent = k;
+        if(k === "⌫") b.classList.add("wide");
+        b.addEventListener("click", ()=> handleKey(k));
+      }
+      pinPad.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    pinDots.forEach((d,i)=> d.classList.toggle("filled", i < pinBuffer.length));
+  }
+
+  function handleKey(k){
+    lockError.textContent = "";
+    if(k === "⌫"){ pinBuffer = pinBuffer.slice(0,-1); updateDots(); return; }
+    if(pinBuffer.length >= 4) return;
+    pinBuffer += k;
+    updateDots();
+    if(pinBuffer.length === 4){
+      setTimeout(()=> processPin(), 120);
+    }
+  }
+
+  function processPin(){
+    const storedPin = safeGet(PIN_KEY);
+    if(pinMode === "setup"){
+      window._tempPin = pinBuffer;
+      pinMode = "setup-confirm";
+      pinBuffer = "";
+      updateDots();
+      lockTitle.textContent = "もう一度入力してください";
+      return;
+    }
+    if(pinMode === "setup-confirm"){
+      if(pinBuffer === window._tempPin){
+        safeSet(PIN_KEY, pinBuffer);
+        pinBuffer = "";
+        enterApp();
+      } else {
+        lockError.textContent = "一致しません。もう一度設定してください。";
+        pinMode = "setup";
+        pinBuffer = "";
+        updateDots();
+        lockTitle.textContent = "新しいPINを入力";
+      }
+      return;
+    }
+    if(pinMode === "check"){
+      if(pinBuffer === storedPin){
+        pinBuffer = "";
+        enterApp();
+      } else {
+        lockError.textContent = "PINが違います";
+        pinBuffer = "";
+        updateDots();
+      }
+      return;
+    }
+    if(pinMode === "change-new"){
+      safeSet(PIN_KEY, pinBuffer);
+      pinBuffer = "";
+      lockError.textContent = "";
+      alert("PINを変更しました");
+      showLock("check");
+      return;
+    }
+  }
+
+  function showLock(mode){
+    pinMode = mode;
+    pinBuffer = "";
+    updateDots();
+    lockError.textContent = "";
+    mainEl.style.display = "none";
+    lockEl.style.display = "flex";
+    setupNote.style.display = "none";
+    if(mode === "setup"){
+      lockTitle.textContent = "新しいPINを設定";
+      setupNote.style.display = "block";
+    } else if(mode === "check"){
+      lockTitle.textContent = "PIN を入力";
+    } else if(mode === "change-new"){
+      lockTitle.textContent = "新しいPINを入力";
+    }
+  }
+
+  function enterApp(){
+    lockEl.style.display = "none";
+    mainEl.style.display = "block";
+    renderAll();
+  }
+
+  document.getElementById("lockBtn").addEventListener("click", ()=> showLock("check"));
+  document.getElementById("pinSettingsBtn").addEventListener("click", ()=>{
+    showLock("change-new");
+  });
+
+  buildPad();
+
+  // ---------------- Rendering ----------------
+  const listEl = document.getElementById("list");
+  const statCount = document.getElementById("statCount");
+  const statTotal = document.getElementById("statTotal");
+  const statMonth = document.getElementById("statMonth");
+  const searchBox = document.getElementById("searchBox");
+  const genreFilter = document.getElementById("genreFilter");
+  const monthFilter = document.getElementById("monthFilter");
+  const sortToggle = document.getElementById("sortToggle");
+  let sortAsc = false; // false = 新しい順（降順）, true = 古い順（昇順）
+
+  function yen(n){ return "¥" + Number(n||0).toLocaleString("ja-JP"); }
+
+  function renderStats(){
+    const total = entries.reduce((s,e)=> s + (Number(e.price)||0), 0);
+    const now = new Date();
+    const ym = now.getFullYear() + "-" + String(now.getMonth()+1).padStart(2,"0");
+    const monthTotal = entries.filter(e => (e.date||"").startsWith(ym))
+      .reduce((s,e)=> s + (Number(e.price)||0), 0);
+    statCount.textContent = entries.length;
+    statTotal.textContent = yen(total);
+    statMonth.textContent = yen(monthTotal);
+  }
+
+  function renderList(){
+    const q = searchBox.value.trim().toLowerCase();
+    const g = genreFilter.value;
+    const ym = monthFilter.value;
+    let filtered = entries.filter(e=>{
+      const matchQ = !q || (e.shop||"").toLowerCase().includes(q) || (e.area||"").toLowerCase().includes(q) || (e.place||"").toLowerCase().includes(q);
+      const matchG = !g || e.genre === g;
+      const matchYM = !ym || (e.date||"").slice(0,7) === ym;
+      return matchQ && matchG && matchYM;
+    });
+    filtered.sort((a,b)=> sortAsc
+      ? (a.date||"").localeCompare(b.date||"")
+      : (b.date||"").localeCompare(a.date||""));
+
+    if(filtered.length === 0){
+      listEl.innerHTML = '<div class="empty">まだ記録がありません。<br>「＋ 新しい記録を追加」から最初の記録をどうぞ。</div>';
+      return;
+    }
+
+    listEl.innerHTML = filtered.map(e=>{
+      const stars = "★".repeat(e.rating||0) + "☆".repeat(5-(e.rating||0));
+      return `
+      <div class="entry" data-id="${e.id}">
+        <div class="entry-top">
+          <div>
+            <div class="entry-shop">${escapeHtml(e.shop||"（店舗名なし）")}</div>
+            <div class="entry-date">${e.date||""}${e.area ? " ・ " + escapeHtml(e.area) : ""}${e.place ? " ・ " + escapeHtml(e.place) : ""}</div>
+            <span class="entry-tag">${escapeHtml(e.genre||"その他")}</span>
+          </div>
+          <div class="entry-price">${yen(e.price)}</div>
+        </div>
+        ${e.rating ? `<div class="entry-stars">${stars}</div>` : ""}
+        ${e.cast ? `<div class="entry-memo">担当：${escapeHtml(e.cast)}</div>` : ""}
+        ${e.memo ? `<div class="entry-memo">${escapeHtml(e.memo)}</div>` : ""}
+        <div class="entry-actions">
+          <button class="editBtn">編集</button>
+          <button class="del delBtn">削除</button>
+        </div>
+      </div>`;
+    }).join("");
+
+    listEl.querySelectorAll(".editBtn").forEach(b=>{
+      b.addEventListener("click", (ev)=>{
+        const id = ev.target.closest(".entry").dataset.id;
+        openEdit(id);
+      });
+    });
+    listEl.querySelectorAll(".delBtn").forEach(b=>{
+      b.addEventListener("click", (ev)=>{
+        const id = ev.target.closest(".entry").dataset.id;
+        if(confirm("この記録を削除しますか？")){
+          entries = entries.filter(e=> e.id !== id);
+          saveEntries();
+          renderAll();
+        }
+      });
+    });
+  }
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  }
+
+  function renderAll(){
+    renderStats();
+    populateMonthFilter();
+    renderList();
+    renderSuggestions();
+  }
+
+  function populateMonthFilter(){
+    const months = [...new Set(entries.map(e=> (e.date||"").slice(0,7)).filter(Boolean))];
+    months.sort().reverse();
+    const current = monthFilter.value;
+    monthFilter.innerHTML = '<option value="">年月：すべて</option>' +
+      months.map(m=>{
+        const [y, mo] = m.split("-");
+        return `<option value="${m}">${y}年${Number(mo)}月</option>`;
+      }).join("");
+    if(months.includes(current)) monthFilter.value = current;
+  }
+
+  sortToggle.addEventListener("click", ()=>{
+    sortAsc = !sortAsc;
+    sortToggle.textContent = sortAsc ? "古い順 ▾" : "新しい順 ▾";
+    renderList();
+  });
+  monthFilter.addEventListener("change", renderList);
+
+  function renderSuggestions(){
+    const seed = loadSeed();
+    fillDatalist("shopList", entries.map(e=>e.shop).concat(seed.shop));
+    fillDatalist("areaList", entries.map(e=>e.area).concat(seed.area));
+    fillDatalist("placeList", entries.map(e=>e.place).concat(seed.place));
+    fillDatalist("castList", entries.map(e=>e.cast).concat(seed.cast));
+  }
+  function fillDatalist(id, values){
+    const dl = document.getElementById(id);
+    if(!dl) return;
+    const unique = [...new Set(values.filter(v=> v && v.trim()))];
+    dl.innerHTML = unique.map(v=> `<option value="${escapeHtml(v)}"></option>`).join("");
+  }
+
+  const SEED_KEY = "riyou_kiroku_seed_v1";
+  function loadSeed(){
+    try {
+      const raw = safeGet(SEED_KEY);
+      return raw ? JSON.parse(raw) : {shop:[], area:[], place:[], cast:[]};
+    } catch(e){ return {shop:[], area:[], place:[], cast:[]}; }
+  }
+  function saveSeed(seed){ safeSet(SEED_KEY, JSON.stringify(seed)); }
+  function linesToArr(text){ return text.split("\n").map(s=>s.trim()).filter(Boolean); }
+
+  const seedCard = document.getElementById("seedCard");
+  const seedBtn = document.getElementById("seedBtn");
+  const seedCancelBtn = document.getElementById("seedCancelBtn");
+  const seedSaveBtn = document.getElementById("seedSaveBtn");
+  const seedShop = document.getElementById("seedShop");
+  const seedArea = document.getElementById("seedArea");
+  const seedPlace = document.getElementById("seedPlace");
+  const seedCast = document.getElementById("seedCast");
+
+  seedBtn.addEventListener("click", ()=>{
+    const seed = loadSeed();
+    seedShop.value = (seed.shop||[]).join("\n");
+    seedArea.value = (seed.area||[]).join("\n");
+    seedPlace.value = (seed.place||[]).join("\n");
+    seedCast.value = (seed.cast||[]).join("\n");
+    seedCard.style.display = "block";
+    seedCard.scrollIntoView({behavior:"smooth", block:"start"});
+  });
+  seedCancelBtn.addEventListener("click", ()=> seedCard.style.display = "none");
+  seedSaveBtn.addEventListener("click", ()=>{
+    const seed = {
+      shop: linesToArr(seedShop.value),
+      area: linesToArr(seedArea.value),
+      place: linesToArr(seedPlace.value),
+      cast: linesToArr(seedCast.value)
+    };
+    saveSeed(seed);
+    seedCard.style.display = "none";
+    renderSuggestions();
+    alert("候補を保存しました");
+  });
+
+  // ---------------- Form ----------------
+  const formCard = document.getElementById("formCard");
+  const addToggle = document.getElementById("addToggle");
+  const cancelBtn = document.getElementById("cancelBtn");
+  const saveBtn = document.getElementById("saveBtn");
+  const starsInput = document.getElementById("fStars");
+
+  const fDate = document.getElementById("fDate");
+  const fGenre = document.getElementById("fGenre");
+  const fShop = document.getElementById("fShop");
+  const fArea = document.getElementById("fArea");
+  const fPlace = document.getElementById("fPlace");
+  const fPrice = document.getElementById("fPrice");
+  const fCast = document.getElementById("fCast");
+  const fMemo = document.getElementById("fMemo");
+
+  function todayStr(){
+    const d = new Date();
+    return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+  }
+
+  function openForm(){
+    formCard.classList.add("open");
+    addToggle.style.display = "none";
+    formCard.scrollIntoView({behavior:"smooth", block:"start"});
+  }
+  function closeForm(){
+    formCard.classList.remove("open");
+    addToggle.style.display = "block";
+    editingId = null;
+    resetForm();
+  }
+  function resetForm(){
+    fDate.value = todayStr();
+    fGenre.value = "デリヘル";
+    fShop.value = "";
+    fArea.value = "";
+    fPlace.value = "";
+    fPrice.value = "";
+    fCast.value = "";
+    fMemo.value = "";
+    setStars(0);
+  }
+
+  function setStars(n){
+    currentStars = n;
+    starsInput.querySelectorAll("span").forEach(s=>{
+      s.classList.toggle("on", Number(s.dataset.v) <= n);
+    });
+  }
+  starsInput.querySelectorAll("span").forEach(s=>{
+    s.addEventListener("click", ()=> setStars(Number(s.dataset.v)));
+  });
+
+  addToggle.addEventListener("click", ()=>{ resetForm(); openForm(); });
+  cancelBtn.addEventListener("click", closeForm);
+
+  saveBtn.addEventListener("click", ()=>{
+    const entry = {
+      id: editingId || (Date.now().toString(36) + Math.random().toString(36).slice(2,7)),
+      date: fDate.value || todayStr(),
+      genre: fGenre.value,
+      shop: fShop.value.trim(),
+      area: fArea.value.trim(),
+      place: fPlace.value.trim(),
+      price: fPrice.value ? Number(fPrice.value) : 0,
+      cast: fCast.value.trim(),
+      rating: currentStars,
+      memo: fMemo.value.trim()
+    };
+    if(editingId){
+      entries = entries.map(e=> e.id === editingId ? entry : e);
+    } else {
+      entries.push(entry);
+    }
+    saveEntries();
+    closeForm();
+    renderAll();
+  });
+
+  function openEdit(id){
+    const e = entries.find(x=> x.id === id);
+    if(!e) return;
+    editingId = id;
+    fDate.value = e.date || todayStr();
+    fGenre.value = e.genre || "デリヘル";
+    fShop.value = e.shop || "";
+    fArea.value = e.area || "";
+    fPlace.value = e.place || "";
+    fPrice.value = e.price || "";
+    fCast.value = e.cast || "";
+    fMemo.value = e.memo || "";
+    setStars(e.rating || 0);
+    openForm();
+  }
+
+  searchBox.addEventListener("input", renderList);
+  genreFilter.addEventListener("change", renderList);
+
+  // ---------------- Backup / Restore ----------------
+  document.getElementById("exportBtn").addEventListener("click", ()=>{
+    const blob = new Blob([JSON.stringify(entries, null, 2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "riyou-kiroku-backup-" + todayStr() + ".json";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  });
+
+  const fileImport = document.getElementById("fileImport");
+  document.getElementById("importBtn").addEventListener("click", ()=> fileImport.click());
+  fileImport.addEventListener("change", (ev)=>{
+    const file = ev.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = ()=>{
+      try {
+        const data = JSON.parse(reader.result);
+        if(Array.isArray(data)){
+          if(confirm(data.length + "件のデータを読み込みます。既存の記録に追加されます。よろしいですか？")){
+            const existingIds = new Set(entries.map(e=>e.id));
+            data.forEach(d=>{
+              if(!d.id || existingIds.has(d.id)) d.id = Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+              entries.push(d);
+            });
+            saveEntries();
+            renderAll();
+            alert("読み込みが完了しました");
+          }
+        } else {
+          alert("正しい形式のファイルではありません");
+        }
+      } catch(e){
+        alert("ファイルの読み込みに失敗しました");
+      }
+    };
+    reader.readAsText(file);
+    fileImport.value = "";
+  });
+
+  // ---------------- Boot ----------------
+  loadEntries();
+  const storedPin = safeGet(PIN_KEY);
+  if(storedPin){
+    showLock("check");
+  } else {
+    showLock("setup");
+  }
+})();
+</script>
+</body>
+</html>
